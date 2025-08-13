@@ -1,5 +1,6 @@
 import React from 'react';
 import { FiPieChart } from 'react-icons/fi';
+import "./ReportsContent.css"
 
 const ReportsContent = () => {
   return (

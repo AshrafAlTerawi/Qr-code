@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "./settingContent.css"
 const SettingsContent = () => {
   return (
     <div className="settings-content">

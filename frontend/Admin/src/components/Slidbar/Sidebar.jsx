@@ -7,6 +7,9 @@ import "../dashboard/AdminDashboard.css";
 //React hook
 import React, { useState } from "react";
 
+//react routes
+import { useNavigate } from "react-router-dom";
+
 //React icon import
 import {
   FiUsers,
@@ -20,9 +23,16 @@ import {
 } from "react-icons/fi";
 
 const Sidebar = ({ activeTab, setActiveTab }) => {
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => setIsOpen(!isOpen);
+
+  //handel log out
+  const handelLogOut = () => {
+    localStorage.removeItem("token");
+    navigate("/");
+  };
 
   return (
     <>
@@ -76,7 +86,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
           </ul>
         </nav>
 
-        <div className="logout-btn">
+        <div className="logout-btn" onClick={handelLogOut}>
           <FiLogOut /> Logout
         </div>
       </div>

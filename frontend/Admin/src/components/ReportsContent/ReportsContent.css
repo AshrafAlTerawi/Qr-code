@@ -1,0 +1,66 @@
+/* Reports Styles */
+.report-filters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-group label {
+  margin-bottom: 0.5rem;
+  color: #b8b8b8;
+  font-size: 0.9rem;
+}
+
+.filter-group select,
+.filter-group input {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
+.generate-btn {
+  background: linear-gradient(135deg, #00d4ff, #0066cc);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: flex-end;
+}
+
+.generate-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+}
+
+.report-preview {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  min-height: 300px;
+}
+
+.chart-icon {
+  font-size: 3rem;
+  color: rgba(0, 212, 255, 0.3);
+  margin-bottom: 1rem;
+}
+
+.report-preview p {
+  color: #b8b8b8;
+}
+/* end report */

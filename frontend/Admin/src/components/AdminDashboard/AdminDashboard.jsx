@@ -9,9 +9,7 @@ import Sidebar from "../Slidbar/Sidebar.jsx";
 import DashboardContent from "../DashboardContent/DashboardContent.jsx";
 import AttendanceContent from "../AttendanceContent/AttendanceContent.jsx";
 import EmployeesContent from "../EmployeesContent/EmployeesContent.jsx";
-import ReportsContent from "../ReportsContent.jsx";
 import NotificationsContent from "../NotificationsContent/NotificationsContent.jsx";
-import SettingsContent from "../SettingsContent.jsx";
 
 function AdminDashboard() {
   const [activeTab, setActiveTab] = useState("dashboard");

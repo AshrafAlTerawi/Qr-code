@@ -40,17 +40,16 @@ function LoginPage({ onLogin }) {
       );
 
       localStorage.setItem("token", token);
-      console.log("Admin login successful:", adminRes.data.message);
 
       if (adminRes.data.message == "Welcome to the Admin Dashboard") {
-        setError("");
+        setError(adminRes.data.message);
         setIsLoading(true);
         setTimeout(() => {
           setIsLoading(false);
+
           onLogin();
         }, 1500);
       }
-      setMessage(adminRes.data.message);
     } catch (error) {
       const msg = error.response?.data?.message || error.message;
       setError(msg);

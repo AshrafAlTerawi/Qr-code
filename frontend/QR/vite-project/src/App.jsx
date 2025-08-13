@@ -7,7 +7,7 @@ import QRDisplay from "./components/QRDisplay";
 import "./App.css"
 
 const INTERVAL = 15;
-
+// new edits 
 // Animated border gradient
 const gradientAnimation = keyframes`
   0% { background-position: 0% 50%; }

@@ -1,5 +1,10 @@
-import React from 'react';
-import { FiUserPlus } from 'react-icons/fi';
+//css import
+import "./EmployeesContent.css";
+
+import React from "react";
+
+//react icon import
+import { FiUserPlus } from "react-icons/fi";
 
 const EmployeesContent = ({ employees }) => {
   return (
@@ -10,7 +15,7 @@ const EmployeesContent = ({ employees }) => {
           <FiUserPlus /> Add Employee
         </button>
       </div>
-      
+
       <div className="employees-table">
         <table>
           <thead>
@@ -25,11 +30,13 @@ const EmployeesContent = ({ employees }) => {
             </tr>
           </thead>
           <tbody>
-            {employees.map(emp => (
+            {employees.map((emp) => (
               <tr key={emp.id}>
                 <td>{emp.id}</td>
                 <td>{emp.name}</td>
-                <td>{emp.name.replace(/\s+/g, '').toLowerCase()}@company.com</td>
+                <td>
+                  {emp.name.replace(/\s+/g, "").toLowerCase()}@company.com
+                </td>
                 <td>{emp.position}</td>
                 <td>IT</td>
                 <td>15/03/2023</td>

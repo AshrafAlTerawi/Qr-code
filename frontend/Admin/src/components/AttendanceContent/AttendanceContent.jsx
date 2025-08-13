@@ -1,4 +1,6 @@
-import React from 'react';
+//css import
+import "./AttendanceContent.css";
+import React from "react";
 
 const AttendanceContent = ({ employees }) => {
   return (
@@ -15,7 +17,7 @@ const AttendanceContent = ({ employees }) => {
           <button className="export-btn">Export to Excel</button>
         </div>
       </div>
-      
+
       <div className="attendance-table">
         <table>
           <thead>
@@ -30,15 +32,19 @@ const AttendanceContent = ({ employees }) => {
             </tr>
           </thead>
           <tbody>
-            {employees.map(emp => (
+            {employees.map((emp) => (
               <tr key={emp.id}>
                 <td>{emp.id}</td>
                 <td>{emp.name}</td>
                 <td>{emp.position}</td>
-                <td><span className={`status-badge ${emp.status}`}>{emp.status}</span></td>
+                <td>
+                  <span className={`status-badge ${emp.status}`}>
+                    {emp.status}
+                  </span>
+                </td>
                 <td>{emp.checkIn}</td>
                 <td>{emp.checkOut}</td>
-                <td>{emp.status !== 'absent' ? '8h 15m' : '--'}</td>
+                <td>{emp.status !== "absent" ? "8h 15m" : "--"}</td>
               </tr>
             ))}
           </tbody>

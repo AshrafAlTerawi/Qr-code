@@ -1,7 +1,7 @@
 //Css import
 import "./Sidebar.css";
 //Css import from admin dashbord.css
-import "../dashboard/AdminDashboard.css";
+import "../AdminDashboard/AdminDashboard.css";
 
 //React hook
 import React, { useState } from "react";

@@ -1,6 +1,13 @@
-// export default AdminDashboard;
-import React, { useState } from "react";
+//css import
 import "./AdminDashboard.css";
+
+//react hooks import
+import React, { useState } from "react";
+
+//react routes
+import { Navigate } from "react-router-dom";
+
+//components import
 import Sidebar from "../Slidbar/Sidebar.jsx";
 import DashboardContent from "../DashboardContent/DashboardContent.jsx";
 import AttendanceContent from "../AttendanceContent/AttendanceContent.jsx";
@@ -11,6 +18,7 @@ import SettingsContent from "../settingContent/SettingsContent.jsx";
 
 function AdminDashboard() {
   const [activeTab, setActiveTab] = useState("dashboard");
+
   const [employees] = useState([
     {
       id: 1,

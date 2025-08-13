@@ -4,10 +4,16 @@ import "./LoginPage.css";
 //react hooks import
 import { useState, useEffect } from "react";
 
+//react route import
+import { useNavigate, Link } from "react-router-dom";
+
 //axios import
 import axios from "axios";
 
 function LoginPage({ onLogin }) {
+  //react navigate
+  const Navigate = useNavigate();
+
   //Email state
   const [email, setEmail] = useState("");
 
@@ -46,8 +52,8 @@ function LoginPage({ onLogin }) {
         setIsLoading(true);
         setTimeout(() => {
           setIsLoading(false);
-
-          onLogin();
+          Navigate("/admin-Dashboard");
+          // onLogin();
         }, 1500);
       }
     } catch (error) {

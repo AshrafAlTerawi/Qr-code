@@ -4,9 +4,9 @@ import "./AdminDashboard.css";
 import Sidebar from "../Slidbar/Sidebar.jsx";
 import DashboardContent from "../DashboardContent/DashboardContent.jsx";
 import AttendanceContent from "../AttendanceContent/AttendanceContent.jsx";
-import EmployeesContent from "../EmployeesContent.jsx";
+import EmployeesContent from "../EmployeesContents/EmployeesContent.jsx";
 import ReportsContent from "../ReportsContent/ReportsContent.jsx";
-import NotificationsContent from "../NotificationsContent.jsx";
+import NotificationsContent from "../NotificationContent/NotificationsContent.jsx";
 import SettingsContent from "../settingContent/SettingsContent.jsx";
 
 function AdminDashboard() {

@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+//css import
+import "./NotificationsContent.css";
+
+import React, { useState } from "react";
 
 const NotificationsContent = () => {
-  const [newNotification, setNewNotification] = useState('');
+  const [newNotification, setNewNotification] = useState("");
 
   return (
     <div className="notifications-content">
       <h2>Send Notification</h2>
       <div className="notification-form">
-        <textarea 
+        <textarea
           placeholder="Type your notification message here..."
           value={newNotification}
           onChange={(e) => setNewNotification(e.target.value)}
@@ -17,7 +20,7 @@ const NotificationsContent = () => {
           <button className="schedule-btn">Schedule Notification</button>
         </div>
       </div>
-      
+
       <div className="notification-history">
         <h3>Recent Notifications</h3>
         <div className="history-list">
@@ -34,7 +37,9 @@ const NotificationsContent = () => {
           <div className="history-item">
             <div className="notification-message">
               <strong>System Maintenance</strong>
-              <p>System will be down for maintenance from 12AM to 2AM tonight</p>
+              <p>
+                System will be down for maintenance from 12AM to 2AM tonight
+              </p>
             </div>
             <div className="notification-meta">
               <span>Sent: Yesterday 16:45</span>

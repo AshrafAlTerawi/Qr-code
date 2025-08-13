@@ -9,7 +9,7 @@ const authenticateJWT = require("../middlewares/authenticateJWT");
 const authorizeAdmin = require("../middlewares/authorizeAdmin");
 
 //Admin Dashboard Route
-router.post("/admin/dashboard", authenticateJWT, authorizeAdmin, (req, res) => {
+router.get("/admin/dashboard", authenticateJWT, authorizeAdmin, (req, res) => {
   res.status(201).json({ message: "Welcome to the Admin Dashboard" });
 });
 

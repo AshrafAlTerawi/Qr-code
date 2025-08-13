@@ -8,37 +8,56 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function LoginPage({ onLogin }) {
+  //Email state
   const [email, setEmail] = useState("");
+
+  //Password state
   const [password, setPassword] = useState("");
-  console.log("Email state is:", email, "Password state is:", password);
+
   const [isLoading, setIsLoading] = useState(false);
 
+  //Error state
   const [error, setError] = useState("");
+  console.log("the errors is", error);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      onLogin();
-    }, 1500);
-  };
+  //handel log in
   const handleLogin = async (e) => {
     e.preventDefault();
+    setError("");
     try {
       const response = await axios.post(
         "http://localhost:3002/auth/employees/login",
         { email, password }
       );
 
-      localStorage.setItem("token", response.data.token);
+      const token = response.data.token;
 
-      console.log("the token from response is", response.data.token);
+      const adminRes = await axios.get(
+        "http://localhost:3002/admin/dashboard",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+
+      localStorage.setItem("token", token);
+      console.log("Admin login successful:", adminRes.data.message);
+
+      if (adminRes.data.message == "Welcome to the Admin Dashboard") {
+        setError("");
+        setIsLoading(true);
+        setTimeout(() => {
+          setIsLoading(false);
+          onLogin();
+        }, 1500);
+      }
+      setMessage(adminRes.data.message);
     } catch (error) {
-      setError("Login error:", error.response?.data || error.message);
-      console.error("Login error:", error.response?.data || error.message);
+      const msg = error.response?.data?.message || error.message;
+      setError(msg);
+      console.error("Login error:", msg);
     }
   };
+
   return (
     <div className="login-background">
       <div className="floating-elements">

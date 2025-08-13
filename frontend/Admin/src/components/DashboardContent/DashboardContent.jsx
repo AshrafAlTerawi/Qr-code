@@ -1,3 +1,6 @@
+//css import
+import "./DashboardContent.css";
+
 import React from "react";
 import { FiUsers, FiClock } from "react-icons/fi";
 

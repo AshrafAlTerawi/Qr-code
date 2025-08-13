@@ -2,8 +2,8 @@
 import React, { useState } from "react";
 import "./AdminDashboard.css";
 import Sidebar from "../Slidbar/Sidebar.jsx";
-import DashboardContent from "../DashboardContent.jsx";
-import AttendanceContent from "../AttendanceContent.jsx";
+import DashboardContent from "../DashboardContent/DashboardContent.jsx";
+import AttendanceContent from "../AttendanceContent/AttendanceContent.jsx";
 import EmployeesContent from "../EmployeesContent.jsx";
 import ReportsContent from "../ReportsContent.jsx";
 import NotificationsContent from "../NotificationsContent.jsx";

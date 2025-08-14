@@ -54,6 +54,8 @@ function AdminDashboard() {
     },
   ]);
 
+  const [showPassword, setShowPassword] = React.useState(false);
+
   const renderContent = () => {
     switch (activeTab) {
       case "dashboard":

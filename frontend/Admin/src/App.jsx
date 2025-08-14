@@ -12,28 +12,45 @@ import LoginPage from "./pages/LoginPage.jsx";
 import AdminDashboard from "./components/dashboard/AdminDashboard.jsx";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
 
+import NotificationToast from "./components/NotificationToast/NotificationToast.jsx";
+import { SnackbarProvider } from "notistack";
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  const handleLogin = () => {
-    setIsAuthenticated(true);
-  };
+  const [showToast, setShowToast] = useState(false);
+  const [messageToast, setMessageToast] = useState("");
+  const [toastVariant, setToastVariant] = useState("success");
 
   return (
     <>
-      <Router>
-        <Routes>
-          <Route
-            path="/admin-Dashboard"
-            element={
-              <ProtectedRoute>
-                <AdminDashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/" element={<LoginPage />} />
-        </Routes>
-      </Router>
+      <SnackbarProvider maxSnack={4} autoHideDuration={3000}>
+        <NotificationToast
+          showToast={showToast}
+          setShowToast={setShowToast}
+          messageToast={messageToast}
+          variant={toastVariant}
+        />
+        <Router>
+          <Routes>
+            <Route
+              path="/admin-Dashboard"
+              element={
+                <ProtectedRoute>
+                  <AdminDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/"
+              element={
+                <LoginPage
+                  setShowToast={setShowToast}
+                  setMessageToast={setMessageToast}
+                  setToastVariant={setToastVariant}
+                />
+              }
+            />
+          </Routes>
+        </Router>
+      </SnackbarProvider>
     </>
   );
 }

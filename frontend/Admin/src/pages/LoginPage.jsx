@@ -22,7 +22,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Typography from "@mui/material/Typography";
 
-function LoginPage({ onLogin }) {
+function LoginPage({ setShowToast, setMessageToast, setToastVariant }) {
   //react navigate
   const Navigate = useNavigate();
 
@@ -37,7 +37,6 @@ function LoginPage({ onLogin }) {
 
   //Error state
   const [error, setError] = useState("");
-  console.log("the errors is", error);
 
   //handel log in
   const handleLogin = async (e) => {
@@ -60,21 +59,26 @@ function LoginPage({ onLogin }) {
 
       localStorage.setItem("token", token);
 
-      if (adminRes.data.message == "Welcome to the Admin Dashboard") {
-        setError(adminRes.data.message);
+      if (adminRes.data.message === "Welcome to the Admin Dashboard") {
+        setToastVariant("success");
+        setMessageToast(adminRes.data.message);
         setIsLoading(true);
         setTimeout(() => {
           setIsLoading(false);
           Navigate("/admin-Dashboard");
-          // onLogin();
+          setShowToast(true);
         }, 1500);
       }
     } catch (error) {
       const msg = error.response?.data?.message || error.message;
-      setError(msg);
+      console.log("the error is ", msg);
+      setToastVariant("error");
+      setMessageToast(msg);
+      setShowToast(true);
       console.error("Login error:", msg);
     }
   };
+
   //===========// MUI event handler for form actions==========//
 
   //show password MUI state
@@ -195,7 +199,6 @@ function LoginPage({ onLogin }) {
             {isLoading ? "Authenticating..." : "Login"}
           </button>
         </form>
-        <h1>{error}</h1>
       </Box>
     </Box>
   );

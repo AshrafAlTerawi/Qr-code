@@ -11,6 +11,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage.jsx";
 import AdminDashboard from "./components/dashboard/AdminDashboard.jsx";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
+import Sidebar from "./components/Slidbar/Sidebar.jsx";
+//create routing
+import EmployeesContent from "./components/EmployeesContents/EmployeesContent.jsx";
+import ReportsContent from "./components/ReportsContent/ReportsContent.jsx";
 
 import NotificationToast from "./components/NotificationToast/NotificationToast.jsx";
 import { SnackbarProvider } from "notistack";

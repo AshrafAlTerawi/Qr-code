@@ -10,6 +10,18 @@ import { useNavigate, Link } from "react-router-dom";
 //axios import
 import axios from "axios";
 
+//MTU css framework
+import * as React from "react";
+import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import InputAdornment from "@mui/material/InputAdornment";
+import FormControl from "@mui/material/FormControl";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Typography from "@mui/material/Typography";
+
 function LoginPage({ onLogin }) {
   //react navigate
   const Navigate = useNavigate();
@@ -20,6 +32,7 @@ function LoginPage({ onLogin }) {
   //Password state
   const [password, setPassword] = useState("");
 
+  //Is loading state
   const [isLoading, setIsLoading] = useState(false);
 
   //Error state
@@ -62,50 +75,129 @@ function LoginPage({ onLogin }) {
       console.error("Login error:", msg);
     }
   };
+  //===========// MUI event handler for form actions==========//
 
+  //show password MUI state
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  //handels show password
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
+  const handleMouseUpPassword = (event) => {
+    event.preventDefault();
+  };
   return (
-    <div className="login-background">
-      <div className="floating-elements">
-        <div className="floating-element"></div>
-        <div className="floating-element"></div>
-        <div className="floating-element"></div>
-      </div>
+    <Box className="login-background">
+      <Box className="floating-elements">
+        <Box className="floating-element" />
+        <Box className="floating-element" />
+        <Box className="floating-element" />
+      </Box>
 
-      <div className="login-container">
-        <h1 className="login-title">Welcome Back</h1>
-        <p className="login-subtitle">Sign in to access your account</p>
+      <Box className="login-container">
+        <Typography variant="h4" className="login-title">
+          Welcome Back
+        </Typography>
+        <Typography variant="subtitle1" className="login-subtitle">
+          Sign in to access your account
+        </Typography>
 
         <form
           onSubmit={handleLogin}
           className={`login-form ${isLoading ? "updating" : ""}`}
         >
-          <div className="form-group">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              placeholder="Email Address"
-              className="form-input"
-            />
-          </div>
-          <div className="form-group">
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              placeholder="Password"
-              className="form-input"
-            />
-          </div>
+          <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+            <FormControl sx={{ m: 1, width: "38ch" }} variant="outlined">
+              <InputLabel
+                style={{
+                  fontSize: "15px",
+                  color: "#fefefe96",
+                }}
+              >
+                Email
+              </InputLabel>
+              <OutlinedInput
+                sx={{
+                  background: "#4343f0",
+                  height: "48px",
+                  width: "100%",
+                  background: "rgba(0, 0, 0, 0.2)",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  color: "#ffffff",
+                  padding: "0.75rem 1rem",
+                  borderRadius: "6px",
+                  transition: "border-color 0.3s ease",
+                  fontSize: "13px",
+                  fontFamily: "'Roboto', 'Helvetica', 'Arial', sans-serif",
+                }}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                label="email"
+              />
+            </FormControl>
+          </Box>
+
+          <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+            <FormControl sx={{ m: 1, width: "38ch" }} variant="outlined">
+              <InputLabel
+                htmlFor="outlined-adornment-password"
+                style={{
+                  fontSize: "15px",
+                  color: "#fefefe96",
+                }}
+              >
+                Password
+              </InputLabel>
+              <OutlinedInput
+                sx={{
+                  background: "#4343f0",
+                  height: "48px",
+                  width: "100%",
+                  background: "rgba(0, 0, 0, 0.2)",
+                  border: "1px solid rgba(255, 255, 255, 0.1)",
+                  color: "#ffffff",
+                  padding: "0.75rem 1rem",
+                  borderRadius: "6px",
+                  transition: "border-color 0.3s ease",
+                }}
+                id="outlined-adornment-password"
+                type={showPassword ? "text" : "password"}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
+                endAdornment={
+                  <InputAdornment position="end">
+                    <IconButton
+                      aria-label={
+                        showPassword
+                          ? "hide the password"
+                          : "display the password"
+                      }
+                      onClick={handleClickShowPassword}
+                      onMouseDown={handleMouseDownPassword}
+                      onMouseUp={handleMouseUpPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                }
+                label="Password"
+              />
+            </FormControl>
+          </Box>
           <button type="submit" className="login-btn" disabled={isLoading}>
             {isLoading ? "Authenticating..." : "Login"}
           </button>
         </form>
         <h1>{error}</h1>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
 

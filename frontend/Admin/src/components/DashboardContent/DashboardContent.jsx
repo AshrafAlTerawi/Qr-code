@@ -16,7 +16,7 @@ import { useUsers } from "../../Contexts/UserContext";
 
 const DashboardContent = ({ employees }) => {
   const { Users, countUser } = useUsers();
-  console.log("the state users is:", Users);
+
   return (
     <div className="dashboard-content">
       <div className="stats-container">

@@ -14,6 +14,10 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.jsx";
 
 import NotificationToast from "./components/NotificationToast/NotificationToast.jsx";
 import { SnackbarProvider } from "notistack";
+
+//contexts import
+import { UserProvider } from "./Contexts/UserContext.jsx";
+
 function App() {
   const [showToast, setShowToast] = useState(false);
   const [messageToast, setMessageToast] = useState("");
@@ -21,36 +25,38 @@ function App() {
 
   return (
     <>
-      <SnackbarProvider maxSnack={4} autoHideDuration={3000}>
-        <NotificationToast
-          showToast={showToast}
-          setShowToast={setShowToast}
-          messageToast={messageToast}
-          variant={toastVariant}
-        />
-        <Router>
-          <Routes>
-            <Route
-              path="/admin-Dashboard"
-              element={
-                <ProtectedRoute>
-                  <AdminDashboard />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/"
-              element={
-                <LoginPage
-                  setShowToast={setShowToast}
-                  setMessageToast={setMessageToast}
-                  setToastVariant={setToastVariant}
-                />
-              }
-            />
-          </Routes>
-        </Router>
-      </SnackbarProvider>
+      <UserProvider>
+        <SnackbarProvider maxSnack={4} autoHideDuration={3000}>
+          <NotificationToast
+            showToast={showToast}
+            setShowToast={setShowToast}
+            messageToast={messageToast}
+            variant={toastVariant}
+          />
+          <Router>
+            <Routes>
+              <Route
+                path="/admin-Dashboard"
+                element={
+                  <ProtectedRoute>
+                    <AdminDashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/"
+                element={
+                  <LoginPage
+                    setShowToast={setShowToast}
+                    setMessageToast={setMessageToast}
+                    setToastVariant={setToastVariant}
+                  />
+                }
+              />
+            </Routes>
+          </Router>
+        </SnackbarProvider>
+      </UserProvider>
     </>
   );
 }
